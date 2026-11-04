@@ -1,0 +1,25 @@
+# Lista branca: ignora tudo na raiz e libera so os fontes.
+/*
+!/.gitignore
+!/.gitattributes
+
+# Fontes do projeto
+!/*.pas
+!/*.dfm
+!/*.dpr
+!/*.dproj
+!/*.res
+!/*.fr3
+!/*.dot
+
+# Pastas com fontes ou arquivos fixos usados pelo sistema
+!/Classes/
+
+# Dentro das pastas liberadas: gerados e copias
+*.dcu
+*.exe
+*.zip
+*.~*
+*.bak*
+*.pas-pre-*
+__history/

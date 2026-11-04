@@ -1,0 +1,317 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{24F911AD-78E5-4DA5-BBAB-DDA91A0FE64B}</ProjectGuid>
+			<ProjectVersion>12.2</ProjectVersion>
+			<MainSource>ClienteEtechLic.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<Base>True</Base>
+			<Platform>Win32</Platform>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>vclx;vcl;vclimg;dbrtl;Rave77VCL;bdertl;rtl;vclactnband;vcldb;vcldbx;vcltouch;xmlrtl;dsnap;dsnapcon;TeeUI;TeeDB;Tee;vclib;ibxpress;adortl;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_100_140;Intraweb_100_140;VclSmp;vclie;websnap;webdsnap;inetdb;inetdbbde;inetdbxpress;soaprtl;vclribbon;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapServer;DBXInterBaseDriver;DBXMySQLDriver;dbxcds;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;DSEncryptFilter;dxCoreD14;cxLibraryD14;cxEditorsD14;cxExtEditorsD14;dxBarD14;dxBarDBNavD14;dxBarExtDBItemsD14;dxBarExtItemsD14;dxRibbonD14;cxBarEditItemD14;dxdbtrD14;dxtrmdD14;dxmdsD14;dxDockingD14;dxFlowChartD14;cxPageControlD14;dxLayoutControlD14;dxNavBarD14;dxorgcD14;dxdborD14;cxGridD14;cxPivotGridD14;cxPivotGridChartD14;cxPivotGridOLAPD14;cxTreeListD14;cxTreeListdxBarPopupMenuD14;cxSchedulerD14;cxSchedulerGridD14;dxComnD14;dxsbD14;dcldxSkinsCoreD14;dxSkinsCoreD14;dxSkinscxPCPainterD14;dxSkinscxScheduler3PainterD14;dxSkinsdxDLPainterD14;dxSkinsdxRibbonPainterD14;dxSkinsdxBarPainterD14;dxSkinsdxNavBar2PainterD14;dxSpellCheckerD14;cxSpreadSheetD14;cxVerticalGridD14;dxPSCoreD14;dxPSLnksD14;dxPScxCommonD14;dxPScxExtCommonD14;dxPScxGrid6LnkD14;dxPScxPivotGrid2LnkD14;dxPScxScheduler3LnkD14;dxPScxSSLnkD14;dxPScxTL5LnkD14;dxPScxVGridLnkD14;dxPSTeeChartD14;dxPSDBTeeChartD14;dxPSdxOCLnkD14;dxPSdxDBOCLnkD14;dxPSdxDBTVLnkD14;dxPSdxFCLnkD14;dxPSdxLC2LnkD14;dxPScxPCProdD14;dxPsPrVwAdvD14;dxPSPrVwRibbonD14;dxSkinXmas2008BlueD14;dxSkinBlackD14;dxSkinBlueD14;dxSkinCaramelD14;dxSkinCoffeeD14;dxSkinDarkRoomD14;dxSkinDarkSideD14;dxSkinFoggyD14;dxSkinGlassOceansD14;dxSkiniMaginaryD14;dxSkinLilianD14;dxSkinLiquidSkyD14;dxSkinLondonLiquidSkyD14;dxSkinMcSkinD14;dxSkinMoneyTwinsD14;dxSkinOffice2007BlackD14;dxSkinOffice2007BlueD14;dxSkinOffice2007GreenD14;dxSkinOffice2007PinkD14;dxSkinOffice2007SilverD14;dxSkinOffice2010BlackD14;dxSkinOffice2010BlueD14;dxSkinOffice2010SilverD14;dxSkinPumpkinD14;dxSkinSevenD14;dxSkinSharpD14;dxSkinSilverD14;dxSkinSpringTimeD14;dxSkinStardustD14;dxSkinSummer2008D14;dxSkinValentineD14;Jcl;JclVcl;ACBrDiversos;ACBrComum;ACBrSerial;synapse;ACBr_PAF;ACBr_SPED;ACBr_Sintegra;ACBr_TEFD;ACBrTCP;Seguranca;QR5RunD2010;RLibWinD2010;ACBr_Boleto;ACBr_BoletoFC_Fortes;ACBr_BoletoFC_Quick;OverbyteIcsD2010Run;ACBr_CTe;PCN2;ACBrOpenSSL;ACBrCapicom;ACBrCTeDacteQRpkg;ACBr_NFe2;ACBrNFeDanfeQRpkg;ACBrNFeDanfeRV;ACBrNFeDanfeRVCodeBase;dclZipForged13;vclZipForged13</DCC_UsePackage>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_DependencyCheckOutputName>ClienteEtechLic.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="ClienteEtechLic.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="Classes\Arquivos.pas"/>
+			<DCCReference Include="Classes\dialogos.pas"/>
+			<DCCReference Include="Classes\metodosServ.pas"/>
+			<DCCReference Include="Classes\relatorio.pas"/>
+			<DCCReference Include="Classes\UBiblio.pas"/>
+			<DCCReference Include="Cliente.pas">
+				<Form>FCliente</Form>
+			</DCCReference>
+			<DCCReference Include="CliListaConf.pas">
+				<Form>FCliListaConf</Form>
+			</DCCReference>
+			<DCCReference Include="CliPotenCont.pas">
+				<Form>FCliPotenCont</Form>
+			</DCCReference>
+			<DCCReference Include="CliRefBanc.pas">
+				<Form>FCliRefBanc</Form>
+			</DCCReference>
+			<DCCReference Include="CliRefCom.pas">
+				<Form>FCliRefCom</Form>
+			</DCCReference>
+			<DCCReference Include="CliRefPes.pas">
+				<Form>FCliRefPes</Form>
+			</DCCReference>
+			<DCCReference Include="CondPag.pas">
+				<Form>FCondPag</Form>
+			</DCCReference>
+			<DCCReference Include="Configuracoes.pas">
+				<Form>FConfiguracoes</Form>
+			</DCCReference>
+			<DCCReference Include="Customizar.pas">
+				<Form>FCustomizar</Form>
+			</DCCReference>
+			<DCCReference Include="DM.pas">
+				<Form>FDM</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="DMCliente.pas">
+				<Form>FDMCliente</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="DMFornec.pas">
+				<Form>FDMFornec</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="DMSistema.pas">
+				<Form>FDMSistema</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="DMUsuario.pas">
+				<Form>FDMUsuario</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Localizador.pas">
+				<Form>FLocalizador</Form>
+			</DCCReference>
+			<DCCReference Include="Login.pas">
+				<Form>FLogin</Form>
+			</DCCReference>
+			<DCCReference Include="Municipio.pas">
+				<Form>FMunicipio</Form>
+			</DCCReference>
+			<DCCReference Include="Principal.pas">
+				<Form>FPrincipal</Form>
+			</DCCReference>
+			<DCCReference Include="Sobre.pas">
+				<Form>FSobre</Form>
+			</DCCReference>
+			<DCCReference Include="Servico.pas">
+				<Form>FServico</Form>
+			</DCCReference>
+			<DCCReference Include="Vendedores.pas">
+				<Form>FVendedores</Form>
+			</DCCReference>
+			<DCCReference Include="DMRh.pas">
+				<Form>FDMRh</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="TipoCliente.pas">
+				<Form>FTipoCliente</Form>
+			</DCCReference>
+			<DCCReference Include="Fornecedor.pas">
+				<Form>FFornecedor</Form>
+			</DCCReference>
+			<DCCReference Include="RelRecibo.pas">
+				<Form>FRelRecibo</Form>
+			</DCCReference>
+			<DCCReference Include="ConUsuario.pas">
+				<Form>FConUsuario</Form>
+			</DCCReference>
+			<DCCReference Include="Classes\FuncoesDEV.pas"/>
+			<DCCReference Include="ConCli.pas">
+				<Form>FConCli</Form>
+			</DCCReference>
+			<DCCReference Include="CliCont.pas">
+				<Form>FCliCont</Form>
+			</DCCReference>
+			<DCCReference Include="CliDoc.pas">
+				<Form>FCliDoc</Form>
+			</DCCReference>
+			<DCCReference Include="CliFilial.pas">
+				<Form>FCliFilial</Form>
+			</DCCReference>
+			<DCCReference Include="CliPoten.pas">
+				<Form>FCliPoten</Form>
+			</DCCReference>
+			<DCCReference Include="RelCli.pas">
+				<Form>FRelCli</Form>
+			</DCCReference>
+			<DCCReference Include="RelConCliente.pas">
+				<Form>FRelConCliente</Form>
+			</DCCReference>
+			<DCCReference Include="DM2.pas">
+				<Form>FDM2</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="DMGerLicitacao.pas">
+				<Form>FDMGerLicitacao</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Entidade.pas">
+				<Form>FEntidade</Form>
+			</DCCReference>
+			<DCCReference Include="Pais.pas">
+				<Form>FPais</Form>
+			</DCCReference>
+			<DCCReference Include="TipoEntidade.pas">
+				<Form>FTipoEntidade</Form>
+			</DCCReference>
+			<DCCReference Include="Modalidade.pas">
+				<Form>FModalidade</Form>
+			</DCCReference>
+			<DCCReference Include="FonteLic.pas">
+				<Form>FFonteLic</Form>
+			</DCCReference>
+			<DCCReference Include="Processo.pas">
+				<Form>FProcesso</Form>
+			</DCCReference>
+			<DCCReference Include="ProcLicDoc.pas">
+				<Form>FProcLicDoc</Form>
+			</DCCReference>
+			<DCCReference Include="ConEmpresa.pas">
+				<Form>FConEmpresa</Form>
+			</DCCReference>
+			<DCCReference Include="Contato.pas">
+				<Form>FContato</Form>
+			</DCCReference>
+			<DCCReference Include="Filial.pas">
+				<Form>FFilial</Form>
+			</DCCReference>
+			<DCCReference Include="ContatoEntidade.pas">
+				<Form>FContatoEntidade</Form>
+			</DCCReference>
+			<DCCReference Include="FilialEntidade.pas">
+				<Form>FFilialEntidade</Form>
+			</DCCReference>
+			<DCCReference Include="Email.pas">
+				<Form>FEMail</Form>
+			</DCCReference>
+			<DCCReference Include="EntidadeDoc.pas">
+				<Form>FEntidadeDoc</Form>
+			</DCCReference>
+			<DCCReference Include="EntidadeFilial.pas">
+				<Form>FEntidadeFilial</Form>
+			</DCCReference>
+			<DCCReference Include="ProcessoDup.pas">
+				<Form>FProcessoDup</Form>
+			</DCCReference>
+			<DCCReference Include="ItemProcesso.pas">
+				<Form>FItemProcesso</Form>
+			</DCCReference>
+			<DCCReference Include="ConProcesso.pas">
+				<Form>FConProcesso</Form>
+			</DCCReference>
+			<DCCReference Include="RelProcesso.pas">
+				<Form>FRelProcesso</Form>
+			</DCCReference>
+			<DCCReference Include="RelProcesso2.pas">
+				<Form>FRelProcesso2</Form>
+			</DCCReference>
+			<DCCReference Include="RelProcessoFinanc.pas">
+				<Form>FRelProcessoFinanc</Form>
+			</DCCReference>
+			<DCCReference Include="RelProcessoVigencia.pas">
+				<Form>FRelProcessoVigencia</Form>
+			</DCCReference>
+			<DCCReference Include="DMCRM.pas">
+				<Form>FDMCRM</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="PipelineVenda.pas">
+				<Form>FPipelineVenda</Form>
+			</DCCReference>
+			<DCCReference Include="ServPipelineVenda.pas">
+				<Form>FServPipelineVenda</Form>
+			</DCCReference>
+			<DCCReference Include="HistoPipelineVenda.pas">
+				<Form>FHistoPipelineVenda</Form>
+			</DCCReference>
+			<DCCReference Include="EntidadeCont.pas">
+				<Form>FEntidadeCont</Form>
+			</DCCReference>
+			<DCCReference Include="RRelCust.pas">
+				<Form>FRRelCust</Form>
+			</DCCReference>
+			<DCCReference Include="ConBuscaContato.pas">
+				<Form>FConBuscaContato</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">ClienteEtechLic.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1046</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="%BDSBIN%\dcloffice2k140.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="%BDSBIN%\dclofficexp140.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
