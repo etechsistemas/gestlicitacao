@@ -702,37 +702,25 @@ end;
 procedure TFPipelineVenda.CbEmp2KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = VK_BACK then
-  begin
-    CbEmp2.KeyValue := -1;
-  end;
+  LimpaLookupBackspace(CbEmp2, Key);
 end;
 
 procedure TFPipelineVenda.CbEmpKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = VK_BACK then
-  begin
-    CbEmp.KeyValue := -1;
-  end;
+  LimpaLookupBackspace(CbEmp, Key);
 end;
 
 procedure TFPipelineVenda.CbSolicitante2KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = VK_BACK then
-  begin
-    CbSolicitante2.KeyValue := -1;
-  end;
+  LimpaLookupBackspace(CbSolicitante2, Key);
 end;
 
 procedure TFPipelineVenda.CbSolicitanteKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = VK_BACK then
-  begin
-    CbSolicitante.KeyValue := -1;
-  end;
+  LimpaLookupBackspace(CbSolicitante, Key);
 end;
 
 procedure TFPipelineVenda.CbVendedorExit(Sender: TObject);
@@ -884,30 +872,12 @@ end;
 
 procedure TFPipelineVenda.cxButton11Click(Sender: TObject);
 begin
-    try
-      Application.CreateForm(TFConEmpresa,FConEmpresa);
-      if FConEmpresa.ShowModal = mrok then
-      begin
-        CbEmp2.KeyValue := fdm.TEmpresaCODIGO.Value;
-      end;
-    finally
-      FConEmpresa.Free;
-    end;
+  AbrePesquisa(TFConEmpresa, FConEmpresa, CbEmp2, fdm.TEmpresaCODIGO, False);
 end;
 
 procedure TFPipelineVenda.cxButton15Click(Sender: TObject);
 begin
-  try
-    Application.CreateForm(TFCliPoten, FCliPoten);
-    FCliPoten.PConsulta.Visible := true;
-    if FCliPoten.ShowModal = mrok then
-    begin
-      CbCliPoten.KeyValue := FDMCRM.TCliPotenCODIGO.Value;
-    end;
-  finally
-    FCliPoten.Free;
-    FCliPoten := nil;
-  end;
+  AbrePesquisa(TFCliPoten, FCliPoten, CbCliPoten, FDMCRM.TCliPotenCODIGO);
 end;
 
 procedure TFPipelineVenda.cxButton16Click(Sender: TObject);
@@ -927,15 +897,7 @@ end;
 
 procedure TFPipelineVenda.cxButton17Click(Sender: TObject);
 begin
-    try
-      Application.CreateForm(TFConEmpresa,FConEmpresa);
-      if FConEmpresa.ShowModal = mrok then
-      begin
-        CbEmp.KeyValue := fdm.TEmpresaCODIGO.Value;
-      end;
-    finally
-      FConEmpresa.Free;
-    end;
+  AbrePesquisa(TFConEmpresa, FConEmpresa, CbEmp, fdm.TEmpresaCODIGO, False);
 end;
 
 procedure TFPipelineVenda.cxButton1Click(Sender: TObject);
@@ -1087,16 +1049,7 @@ end;
 
 procedure TFPipelineVenda.cxButton8Click(Sender: TObject);
 begin
-  try
-    Application.CreateForm(TFCliPoten, FCliPoten);
-    FCliPoten.PConsulta.Visible := true;
-    if FCliPoten.ShowModal = mrok then
-    begin
-      CbCliPoten2.KeyValue := FDMCRm.TCliPotenCODIGO.Value;
-    end;
-  finally
-    FCliPoten.Free;
-  end;
+  AbrePesquisa(TFCliPoten, FCliPoten, CbCliPoten2, FDMCRm.TCliPotenCODIGO);
 end;
 
 procedure TFPipelineVenda.cxDBLookupComboBox2Exit(Sender: TObject);

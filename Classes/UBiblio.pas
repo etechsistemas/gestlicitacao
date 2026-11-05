@@ -95,6 +95,9 @@ C1 = 2132;
 C2 = 464656;
 
 
+procedure LimpaLookupBackspace(Combo: TDBLookupComboBox; Key: Word);
+function AbrePesquisa(Classe: TFormClass; var Ref; Combo: TDBLookupComboBox; Campo: TField; Consulta: Boolean = True): Boolean;
+
 implementation
 
 uses  MaskUtils, Principal;
@@ -1831,5 +1834,36 @@ Raise Exception.Create('Erro no arredondamento');
    end;
 end;
 
+
+procedure LimpaLookupBackspace(Combo: TDBLookupComboBox; Key: Word);
+begin
+  if Key = VK_BACK then
+    Combo.KeyValue := -1;
+end;
+
+// abre a tela de cadastro/consulta em modo pesquisa e joga o código escolhido no lookup
+function AbrePesquisa(Classe: TFormClass; var Ref; Combo: TDBLookupComboBox; Campo: TField; Consulta: Boolean = True): Boolean;
+var
+  Painel: TComponent;
+begin
+  Result := False;
+  try
+    Application.CreateForm(Classe, Ref);
+    if Consulta then
+    begin
+      Painel := TForm(Ref).FindComponent('PConsulta');
+      if Painel is TControl then
+        TControl(Painel).Visible := True;
+    end;
+    if TForm(Ref).ShowModal = mrOk then
+    begin
+      Combo.KeyValue := Campo.Value;
+      Result := True;
+    end;
+  finally
+    TForm(Ref).Free;
+    TForm(Ref) := nil;
+  end;
+end;
 
 end.
