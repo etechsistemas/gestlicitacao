@@ -98,6 +98,8 @@ C2 = 464656;
 procedure LimpaLookupBackspace(Combo: TDBLookupComboBox; Key: Word);
 function AbrePesquisa(Classe: TFormClass; var Ref; Combo: TDBLookupComboBox; Campo: TField; Consulta: Boolean = True): Boolean;
 
+function CaminhoArquivo(const Valor : String) : String;
+
 implementation
 
 uses  MaskUtils, Principal;
@@ -1864,6 +1866,25 @@ begin
     TForm(Ref).Free;
     TForm(Ref) := nil;
   end;
+end;
+
+// caminho real de um arquivo cadastrado (logo, papel de parede...):
+// relativo (image\logo.jpg) -> pasta do sistema; absoluto que nao existe neste PC
+// (sistema instalado em outra pasta) -> mesmo nome na pasta image do sistema
+function CaminhoArquivo(const Valor : String) : String;
+var
+  img : String;
+begin
+  result := Valor;
+  if Valor = '' then
+    exit;
+  if not ((Length(Valor) > 1) and ((Valor[2] = ':') or (Copy(Valor, 1, 2) = '\\'))) then
+    result := ExtractFilePath(Application.ExeName) + Valor;
+  if FileExists(result) then
+    exit;
+  img := ExtractFilePath(Application.ExeName) + 'image\' + ExtractFileName(Valor);
+  if FileExists(img) then
+    result := img;
 end;
 
 end.

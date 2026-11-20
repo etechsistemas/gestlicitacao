@@ -2,6 +2,7 @@ object FLogin: TFLogin
   Left = 331
   Top = 339
   BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
   Caption = 'Logar-se no sistema E-Tech:'
   ClientHeight = 210
   ClientWidth = 575
@@ -35793,6 +35794,7 @@ object FLogin: TFLogin
       Height = 21
       CharCase = ecUpperCase
       TabOrder = 0
+      OnKeyPress = EdUserKeyPress
     end
     object cxButton1: TcxButton
       Left = 435
@@ -35855,27 +35857,6 @@ object FLogin: TFLogin
         393939393939393939399A5B065F5F778E763939393939393939}
       TabOrder = 4
       OnClick = cxButton1Click
-    end
-  end
-  object PAtualizacao: TPanel
-    Left = 80
-    Top = 51
-    Width = 425
-    Height = 88
-    TabOrder = 1
-    Visible = False
-    object Label3: TLabel
-      Left = 48
-      Top = 32
-      Width = 324
-      Height = 14
-      Caption = 'Atualizando o sistema, por favor aguarde alguns instantes!'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Arial'
-      Font.Style = [fsBold]
-      ParentFont = False
     end
   end
 end

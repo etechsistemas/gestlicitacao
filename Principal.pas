@@ -647,9 +647,9 @@ begin
 
       fdm.TConfig.Open;
 
-      if (fdm.tconfigPAPELPAREDE.value <> '') and (FileExists(fdm.tconfigPAPELPAREDE.value)) then
+      if (fdm.tconfigPAPELPAREDE.value <> '') and (FileExists(CaminhoArquivo(fdm.tconfigPAPELPAREDE.value))) then
       begin
-        Image1.Picture.LoadFromFile(fdm.tconfigPAPELPAREDE.value);
+        Image1.Picture.LoadFromFile(CaminhoArquivo(fdm.tconfigPAPELPAREDE.value));
       end;
 
       if FDMUsuario.QVerUsuarioCODIGO.Value <> 1 then

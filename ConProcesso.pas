@@ -302,14 +302,14 @@ begin
         FRelProcesso.QrLbNumero.Caption := EdNumero.Text;
         if fdm.TempresaLOGO.Value <> '' then
         begin
-          if FileExists(fdm.TempresaLOGO.Value) then
+          if FileExists(CaminhoArquivo(fdm.TempresaLOGO.Value)) then
           begin
-            FRelProcesso.QRImage1.Picture.LoadFromFile(fdm.TempresaLOGO.Value);
+            FRelProcesso.QRImage1.Picture.LoadFromFile(CaminhoArquivo(fdm.TempresaLOGO.Value));
             FRelProcesso.QRImage1 := ProportionalHeight(FRelProcesso.QRImage1,68);
           end
           else
           begin
-            showmessage('A Logo não foi encontrada no seguinte caminho: '+fdm.TempresaLOGO.Value);
+            showmessage('A Logo não foi encontrada no seguinte caminho: '+CaminhoArquivo(fdm.TempresaLOGO.Value));
           end;
         end;
         FRelProcesso.QrLbNomecli.caption := EdNomeCli.text;
@@ -351,14 +351,14 @@ begin
         fdm.TEmpresa.Locate('CODIGO',FDMGerLicitacao.QConProcessoLicfinancCODEMPFAT.Value,[]);
         if fdm.TempresaLOGO.Value <> '' then
         begin
-          if FileExists(fdm.TempresaLOGO.Value) then
+          if FileExists(CaminhoArquivo(fdm.TempresaLOGO.Value)) then
           begin
-            FRelProcessoFinanc.QRImage1.Picture.LoadFromFile(fdm.TempresaLOGO.Value);
+            FRelProcessoFinanc.QRImage1.Picture.LoadFromFile(CaminhoArquivo(fdm.TempresaLOGO.Value));
             FRelProcessoFinanc.QRImage1 := ProportionalHeight(FRelProcessoFinanc.QRImage1,68);
           end
           else
           begin
-            showmessage('A Logo não foi encontrada no seguinte caminho: '+fdm.TempresaLOGO.Value);
+            showmessage('A Logo não foi encontrada no seguinte caminho: '+CaminhoArquivo(fdm.TempresaLOGO.Value));
           end;
         end;
       FRelProcessoFinanc.QrLbComissao.caption := EdTotComissao.Text;
@@ -614,14 +614,14 @@ begin
 
         if fdm.TempresaLOGO.Value <> '' then
         begin
-          if FileExists(fdm.TempresaLOGO.Value) then
+          if FileExists(CaminhoArquivo(fdm.TempresaLOGO.Value)) then
           begin
-            FRelProcessoFinanc.QRImage1.Picture.LoadFromFile(fdm.TempresaLOGO.Value);
+            FRelProcessoFinanc.QRImage1.Picture.LoadFromFile(CaminhoArquivo(fdm.TempresaLOGO.Value));
             FRelProcessoFinanc.QRImage1 := ProportionalHeight(FRelProcesso.QRImage1,68);
           end
           else
           begin
-            showmessage('A Logo não foi encontrada no seguinte caminho: '+fdm.TempresaLOGO.Value);
+            showmessage('A Logo não foi encontrada no seguinte caminho: '+CaminhoArquivo(fdm.TempresaLOGO.Value));
           end;
         end;
         FRelProcessoFinanc.QrLbNomecli.caption := EdNomeCli.text;
@@ -692,14 +692,14 @@ begin
 
         if fdm.TempresaLOGO.Value <> '' then
         begin
-          if FileExists(fdm.TempresaLOGO.Value) then
+          if FileExists(CaminhoArquivo(fdm.TempresaLOGO.Value)) then
           begin
-            FRelProcesso2.QRImage1.Picture.LoadFromFile(fdm.TempresaLOGO.Value);
+            FRelProcesso2.QRImage1.Picture.LoadFromFile(CaminhoArquivo(fdm.TempresaLOGO.Value));
             FRelProcesso2.QRImage1 := ProportionalHeight(FRelProcesso2.QRImage1,68);
           end
           else
           begin
-            showmessage('A Logo não foi encontrada no seguinte caminho: '+fdm.TempresaLOGO.Value);
+            showmessage('A Logo não foi encontrada no seguinte caminho: '+CaminhoArquivo(fdm.TempresaLOGO.Value));
           end;
         end;
         FRelProcesso2.QrLbNomecli.caption := EdNomeCli2.text;
@@ -808,14 +808,14 @@ begin
 
       if fdm.TempresaLOGO.Value <> '' then
       begin
-        if FileExists(fdm.TempresaLOGO.Value) then
+        if FileExists(CaminhoArquivo(fdm.TempresaLOGO.Value)) then
         begin
-          FRelProcessoVigencia.QRImage1.Picture.LoadFromFile(fdm.TempresaLOGO.Value);
+          FRelProcessoVigencia.QRImage1.Picture.LoadFromFile(CaminhoArquivo(fdm.TempresaLOGO.Value));
           FRelProcessoVigencia.QRImage1 := ProportionalHeight(FRelProcessoVigencia.QRImage1,68);
         end
         else
         begin
-          showmessage('A Logo não foi encontrada no seguinte caminho: '+fdm.TempresaLOGO.Value);
+          showmessage('A Logo não foi encontrada no seguinte caminho: '+CaminhoArquivo(fdm.TempresaLOGO.Value));
         end;
       end;
 
@@ -1013,14 +1013,14 @@ begin
 
       if fdm.TempresaLOGO.Value <> '' then
       begin
-        if FileExists(fdm.TempresaLOGO.Value) then
+        if FileExists(CaminhoArquivo(fdm.TempresaLOGO.Value)) then
         begin
-          FRelProcesso2.QRImage1.Picture.LoadFromFile(fdm.TempresaLOGO.Value);
+          FRelProcesso2.QRImage1.Picture.LoadFromFile(CaminhoArquivo(fdm.TempresaLOGO.Value));
           FRelProcesso2.QRImage1 := ProportionalHeight(FRelProcesso2.QRImage1,68);
         end
         else
         begin
-          showmessage('A Logo não foi encontrada no seguinte caminho: '+fdm.TempresaLOGO.Value);
+          showmessage('A Logo não foi encontrada no seguinte caminho: '+CaminhoArquivo(fdm.TempresaLOGO.Value));
         end;
       end;
 
@@ -1157,14 +1157,14 @@ begin
 
       if fdm.TempresaLOGO.Value <> '' then
       begin
-        if FileExists(fdm.TempresaLOGO.Value) then
+        if FileExists(CaminhoArquivo(fdm.TempresaLOGO.Value)) then
         begin
-          FRelProcesso.QRImage1.Picture.LoadFromFile(fdm.TempresaLOGO.Value);
+          FRelProcesso.QRImage1.Picture.LoadFromFile(CaminhoArquivo(fdm.TempresaLOGO.Value));
           FRelProcesso.QRImage1 := ProportionalHeight(FRelProcesso.QRImage1,68);
         end
         else
         begin
-          showmessage('A Logo não foi encontrada no seguinte caminho: '+fdm.TempresaLOGO.Value);
+          showmessage('A Logo não foi encontrada no seguinte caminho: '+CaminhoArquivo(fdm.TempresaLOGO.Value));
         end;
       end;
 

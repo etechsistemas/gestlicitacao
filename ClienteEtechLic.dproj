@@ -46,6 +46,7 @@
 			<DCCReference Include="Classes\Arquivos.pas"/>
 			<DCCReference Include="Classes\dialogos.pas"/>
 			<DCCReference Include="Classes\metodosServ.pas"/>
+			<DCCReference Include="Classes\AtualizaArquivos.pas"/>
 			<DCCReference Include="Classes\relatorio.pas"/>
 			<DCCReference Include="Classes\UBiblio.pas"/>
 			<DCCReference Include="Cliente.pas">

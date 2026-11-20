@@ -13,7 +13,7 @@ uses
   function recuperaSenha(login : String): boolean;
   procedure getfile(caminho, destino : String);
   function pastaserv():String;
-  function getversaoserv():String;
+  function getversaoserv(pacotes : String = ''):String;
   function getipservidor() : String;
   function atualizaexe():boolean;
   procedure copiaarquivo(origem, destino, pastaserv : String);
@@ -258,9 +258,9 @@ end;
       result := Split(fdmsistema.ConsultaCEP.Params[1].AsString,'|');
   end;
 
-  function getversaoserv():String;
+  function getversaoserv(pacotes : String):String;
   begin
-    fdmsistema.getversaoserv.Params.ParamByName('APLIC').AsString := 'CLINICA';
+    fdmsistema.getversaoserv.Params.ParamByName('APLIC').AsString := 'GERLIC' + pacotes;
     fdmsistema.getversaoserv.ExecuteMethod;
     result := fdmsistema.getversaoserv.Params[1].Asstring;
   end;

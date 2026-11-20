@@ -8,6 +8,7 @@ uses
   Arquivos in 'Classes\Arquivos.pas',
   dialogos in 'Classes\dialogos.pas',
   metodosServ in 'Classes\metodosServ.pas',
+  AtualizaArquivos in 'Classes\AtualizaArquivos.pas',
   relatorio in 'Classes\relatorio.pas',
   UBiblio in 'Classes\UBiblio.pas',
   Cliente in 'Cliente.pas' {FCliente},

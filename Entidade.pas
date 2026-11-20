@@ -277,14 +277,14 @@ begin
       fdm.Tempresa.Open;
     if fdm.TempresaLOGO.Value <> '' then
     begin
-      if FileExists(fdm.TempresaLOGO.Value) then
+      if FileExists(CaminhoArquivo(fdm.TempresaLOGO.Value)) then
       begin
-        FRelCli.QRImage1.Picture.LoadFromFile(fdm.TempresaLOGO.Value);
+        FRelCli.QRImage1.Picture.LoadFromFile(CaminhoArquivo(fdm.TempresaLOGO.Value));
         FRelCli.QRImage1 := ProportionalHeight(FRelCli.QRImage1,68);
       end
       else
       begin
-        showmessage('A Logo não foi encontrada no seguinte caminho: '+fdm.TempresaLOGO.Value);
+        showmessage('A Logo não foi encontrada no seguinte caminho: '+CaminhoArquivo(fdm.TempresaLOGO.Value));
       end;
     end;
     FDMGerLicitacao.QConEntidade2.DisableControls;

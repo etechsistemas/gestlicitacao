@@ -19,13 +19,12 @@ type
     EdSenha: TEdit;
     EdUser: TEdit;
     cxButton1: TcxButton;
-    PAtualizacao: TPanel;
-    Label3: TLabel;
     procedure BtOkClick(Sender: TObject);
     procedure cxButton2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure LerIni;
     procedure EdSenhaKeyPress(Sender: TObject; var Key: Char);
+    procedure EdUserKeyPress(Sender: TObject; var Key: Char);
     procedure cxButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -42,9 +41,29 @@ var
 
 implementation
 
-uses UBiblio, Principal, DMUsuario, DMSistema, metodosServ;
+uses UBiblio, Principal, DMUsuario, DMSistema, metodosServ, AtualizaArquivos;
 
 {$R *.dfm}
+
+const
+  //pastas que o servidor mantem iguais em todos os PCs
+  PACOTES = 'image';
+
+//sistema, imagens e schemas numa chamada so (com barra de progresso).
+//True = atualizou o exe e ja reabriu o sistema
+function AtualizouSistema : boolean;
+begin
+  result := false;
+  try
+    result := VerificaAtualizacao(FDMSistema.etechserver, getversaoserv('|' + PACOTES), 'GERLIC', 'VERSAO');
+  except
+    on E : Exception do
+    begin
+      MessageDlg(E.Message, mtError, [mbOk], 0);
+      Abort;
+    end;
+  end;
+end;
 
 //apaga os exes antigos que a atualizacao deixou na pasta (Nome.oldAAAAMMDD)
 procedure apagaexesantigos;
@@ -92,7 +111,8 @@ begin
       if not (FPrincipal.trocausu) and not (aprov) then
       begin
         //gravalogtexto('cria fdmsistema','usuario');
-        Application.CreateForm(TFDMSistema, FDMSistema);
+        if FDMSistema = nil then
+          Application.CreateForm(TFDMSistema, FDMSistema);
         //gravalogtexto('criou','usuario');
       end;
       except
@@ -115,7 +135,8 @@ begin
       if not (FPrincipal.trocausu) and not (aprov) then
       begin
         //gravalogtexto('cria fdmusuario','usuario');
-        Application.CreateForm(TFDMUsuario, FDMUsuario);
+        if FDMUsuario = nil then
+          Application.CreateForm(TFDMUsuario, FDMUsuario);
         //gravalogtexto('criou','usuario');
         FDMSistema.etechserver.Open;
       end;
@@ -189,27 +210,8 @@ begin
 
         apagaexesantigos;
 
-        if (versao <> getversaoserv()) then
-        begin
-          try
-            try
-              PAtualizacao.Visible := true;
-              FLogin.Refresh;
-              gravalogtexto('atualiza','usuario');
-              atualizaexe;
-              gravaini('GERLIC','VERSAO',getversaoserv());
-              ShellExecute(0,nil,PChar(Application.ExeName) ,nil, nil, SW_SHOWNORMAL);
-              close;
-            Except
-              on E :Exception do begin
-                MessageDlg(E.Message, mtError, [mbOk], 0);
-                PAtualizacao.Visible := false;
-              end;
-            end;
-          finally
-            PAtualizacao.Visible := false;
-          end;
-        end
+        if AtualizouSistema then
+          close
         else
         begin
           FPrincipal.entrou := true;
@@ -262,24 +264,55 @@ begin
 end;
 
 procedure TFLogin.cxButton1Click(Sender: TObject);
+var
+  temporario : boolean;
 begin
-    if EdUser.Text <> '' then
-    begin
-      if not (recuperaSenha(EdUser.Text)) then
-      begin
-        showmessage('Usuário não encontrado ou desativado');
-      end
-      else
-      begin
-        showmessage('E-mail de recuperação de senha enviado!');
-      end;
-
-    end
-    else
+    if Trim(EdUser.Text) = '' then
     begin
       showmessage('Favor informar o nome do usuário ou e-mail!');
       EdUser.SetFocus;
+      exit;
+    end;
 
+    //antes do primeiro login ainda nao existe conexao com o servidor: abre uma so para isso
+    temporario := FDMSistema = nil;
+    if temporario then
+    begin
+      try
+        Application.CreateForm(TFDMSistema, FDMSistema);
+      except
+        on E : Exception do
+        begin
+          FDMSistema := nil;
+          if (Pos('10061', E.Message) > 0) or (Pos('actively refused', E.Message) > 0) then
+            MessageDlg('Verifique se o servidor está aberto.', mtError, [mbOk], 0)
+          else
+            MessageDlg(E.Message, mtError, [mbOk], 0);
+          exit;
+        end;
+      end;
+    end;
+
+    Screen.Cursor := crHourGlass;
+    try
+      try
+        if recuperaSenha(Trim(EdUser.Text)) then
+          showmessage('E-mail de recuperação de senha enviado!')
+        else
+          showmessage('Não foi possível enviar a senha.' + #13#10#13#10 +
+            'Confira se o usuário (ou e-mail) está certo, se ele está ativo e se tem e-mail no cadastro.');
+      except
+        on E : Exception do
+          MessageDlg('Não foi possível enviar a senha.' + #13#10#13#10 + E.Message, mtError, [mbOk], 0);
+      end;
+    finally
+      Screen.Cursor := crDefault;
+      //a conexao aberta so para isso e fechada: o Entrar abre a dele com o usuario digitado
+      if temporario and (FDMSistema <> nil) then
+      begin
+        FDMSistema.Free;
+        FDMSistema := nil;
+      end;
     end;
 end;
 
@@ -297,6 +330,15 @@ begin
         FDMUsuario.QVerUsuario.open;
       end;
       ModalResult := mrCancel;
+end;
+
+procedure TFLogin.EdUserKeyPress(Sender: TObject; var Key: Char);
+begin
+    if key = #13 then
+    begin
+      key := #0;
+      EdSenha.SetFocus;
+    end;
 end;
 
 procedure TFLogin.EdSenhaKeyPress(Sender: TObject; var Key: Char);

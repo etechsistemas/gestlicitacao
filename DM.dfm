@@ -2880,9 +2880,6 @@ object FDM: TFDM
       FieldName = 'DIGITARPRECOORIG'
       Size = 1
     end
-    object TConfigMODOATUALIZACAO: TStringField
-      FieldName = 'MODOATUALIZACAO'
-    end
     object TConfigATUITENSIMPNOTACOMPRASEQ: TStringField
       FieldName = 'ATUITENSIMPNOTACOMPRASEQ'
       Size = 1

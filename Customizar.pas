@@ -169,7 +169,7 @@ var
 
 implementation
 
-uses DM, metodosServ, UBiblio, RRelCust, Principal, Email, DBClient, QuickRpt, QRPrntr;
+uses DM, metodosServ, UBiblio, RRelCust, Principal, Email, DBClient, QuickRpt, QRPrntr, DMSistema, AtualizaArquivos;
 {$R *.dfm}
 
 // cor gravada no configrel: nome (clBlack) ou número; aceita também o "r.g.b" que a combo
@@ -230,9 +230,9 @@ procedure TFCustomizar.cxButton10Click(Sender: TObject);
 begin
   if OpenPictureDialog1.Execute then
   begin
-    fdm.TconfigrelCAMINHOLOGO.Value := OpenPictureDialog1.FileName;
-    if (fdm.TconfigrelCAMINHOLOGO.Value <> '') and (FileExists(fdm.TconfigrelCAMINHOLOGO.Value)) then
-      Image1.Picture.LoadFromFile(fdm.TconfigrelCAMINHOLOGO.Value);
+    fdm.TconfigrelCAMINHOLOGO.Value := EnviaImagemServidor(FDMSistema.etechserver, OpenPictureDialog1.FileName);
+    if (fdm.TconfigrelCAMINHOLOGO.Value <> '') and (FileExists(CaminhoArquivo(fdm.TconfigrelCAMINHOLOGO.Value))) then
+      Image1.Picture.LoadFromFile(CaminhoArquivo(fdm.TconfigrelCAMINHOLOGO.Value));
   end;
 end;
 
@@ -517,11 +517,11 @@ begin
     FRRelCust.QRSysData2.Left := FRRelCust.LTotPag.Left - FRRelCust.QRSysData2.Width - 2;
 
     // logo à esquerda, com data e hora logo depois
-    if (fdm.TconfigrelCAMINHOLOGO.Value <> '') and (FileExists(fdm.TconfigrelCAMINHOLOGO.Value)) then
+    if (fdm.TconfigrelCAMINHOLOGO.Value <> '') and (FileExists(CaminhoArquivo(fdm.TconfigrelCAMINHOLOGO.Value))) then
     begin
       vLogo := TQRImage.Create(FRRelCust);
       vLogo.Parent := FRRelCust.QRCabecalho;
-      vLogo.Picture.LoadFromFile(fdm.TconfigrelCAMINHOLOGO.Value);
+      vLogo.Picture.LoadFromFile(CaminhoArquivo(fdm.TconfigrelCAMINHOLOGO.Value));
       vLogo.Stretch := True;
       vLogo.Left := 5;
       vLogo.Top := 2;
@@ -853,7 +853,7 @@ end;
 procedure TFCustomizar.cxButton11Click(Sender: TObject);
 begin
   if fdm.TconfigrelCAMINHOLOGO.Value <> '' then
-    ShellExecuteA(0, nil, PansiChar(fdm.TconfigrelCAMINHOLOGO.Value), nil, nil,SW_SHOWNORMAL);
+    ShellExecuteA(0, nil, PansiChar(CaminhoArquivo(fdm.TconfigrelCAMINHOLOGO.Value)), nil, nil,SW_SHOWNORMAL);
 end;
 
 procedure TFCustomizar.cxButton12Click(Sender: TObject);
@@ -1543,8 +1543,8 @@ begin
       if not (fdm.Tconfigrel.State in [dsedit,dsinsert]) then
         fdm.Tconfigrel.Edit;
 
-      if (fdm.TconfigrelCAMINHOLOGO.Value <> '') and (FileExists(fdm.TconfigrelCAMINHOLOGO.Value)) then
-        Image1.Picture.LoadFromFile(fdm.TconfigrelCAMINHOLOGO.Value);
+      if (fdm.TconfigrelCAMINHOLOGO.Value <> '') and (FileExists(CaminhoArquivo(fdm.TconfigrelCAMINHOLOGO.Value))) then
+        Image1.Picture.LoadFromFile(CaminhoArquivo(fdm.TconfigrelCAMINHOLOGO.Value));
 
       if (fdm.TConfigRelFONTECABE.Value <> '') then
         CbFonteCab.FontName := fdm.TConfigRelFONTECABE.Value;

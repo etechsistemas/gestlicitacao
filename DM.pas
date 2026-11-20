@@ -659,7 +659,6 @@ type
     TConfigTIPOLICITACAO: TStringField;
     TConfigESPECORCSERV: TStringField;
     TConfigDIGITARPRECOORIG: TStringField;
-    TConfigMODOATUALIZACAO: TStringField;
     TConfigATUITENSIMPNOTACOMPRASEQ: TStringField;
     TConfigELEVADOR: TStringField;
     TConfigMOSTRARRFT: TStringField;
