@@ -157,6 +157,29 @@ begin
   end;
 end;
 
+// pasta do proprio servidor: o .origem que ele grava ao zipar diz de qual versao e o conteudo
+function PastaJaEhDoServidor(const Nome, Versao : String) : Boolean;
+var
+  sl : TStringList;
+  arq : String;
+begin
+  result := false;
+  arq := PastaSistema + Nome + '.zip.origem';
+  if not FileExists(arq) then
+    exit;
+  sl := TStringList.Create;
+  try
+    try
+      sl.LoadFromFile(arq);
+      result := Trim(sl.Text) = Versao;
+    except
+      result := false;
+    end;
+  finally
+    sl.Free;
+  end;
+end;
+
 procedure GravaLogAtualizacao(const Texto : String);
 var
   f : TextFile;
@@ -778,6 +801,12 @@ begin
         ver := partes.ValueFromIndex[i];
         if (nome = '') or (ver = '') or (LeIni(SECAO_PACOTES, nome) = ver) then
           continue;
+        // sistema aberto na pasta do servidor: os arquivos ja sao os mesmos, so marca a versao
+        if (not SameText(nome, PASTA_IMAGENS)) and PastaJaEhDoServidor(nome, ver) then
+        begin
+          GravaIni(SECAO_PACOTES, nome, ver);
+          continue;
+        end;
         if mutex = 0 then
           mutex := PegaMutex(at);
         if LeIni(SECAO_PACOTES, nome) = ver then
